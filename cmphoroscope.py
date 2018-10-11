@@ -11,9 +11,9 @@ import re
 class CMPHoroscope:
 
     @staticmethod
-    def get_todays1_horoscope(sunsign):
+    def get_todays_horoscope_hindi(sunsign_en):
         print("hi")
-        url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign
+        url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
         response = requests.get(url)
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
@@ -25,7 +25,7 @@ class CMPHoroscope:
         dict = {
             'date': date,
             'horoscope': horoscope,
-            'sunsign': sunsign
+            'sunsign': sunsign_en
         }
 
         return dict
