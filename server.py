@@ -34,7 +34,7 @@ def today_horoscope_route_hindi(sunsign_en):
 			
 			
 # Todays' Horoscope
-@app.route('/horoscope/today-hindi/<sunsign>', methods=['GET'])
+@app.route('/horoscope/today-hindi1/<sunsign>', methods=['GET'])
 def today1_horoscope_route(sunsign):
     result = dict(CMPHoroscope.get_todays_horoscope_hindi1(sunsign))
     return jsonify(date=result['date'],
