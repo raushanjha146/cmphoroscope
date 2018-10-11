@@ -29,9 +29,8 @@ def today_horoscope_route_hindi(sunsign_en, sunsign_hn, language):
     result = dict(CMPHoroscope.get_todays_horoscope_hindi(sunsign_en, sunsign_hn, language))
     #result = dict(CMPHoroscope.get_test())
     return jsonify(date=result['date'],
-            sunsign_en=result['sunsign-english'],
-            sunsign_hn=result['sunsign-hindi'],
-            horoscope=result['horoscope'])
+                   sunsign=result['sunsign'],
+                   horoscope=result['horoscope'])
 			
 			
 # Todays' Horoscope

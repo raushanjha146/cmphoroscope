@@ -12,32 +12,20 @@ class CMPHoroscope:
 
 @staticmethod
     def get_todays_horoscope_hindi(sunsign_en, sunsign_hn, language):
-        url_hindi = "https://hindi.astroyogi.com/rashiphal/"+sunsign_hn+"-dainik-rashiphal"
-        #url_hindi = "https://hindi.mpanchang.com/rashifal/aaj-ka-rashifal/vrishabha-rashi/"
-        url_english = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
-        ######## for Date ################
-        response = requests.get(url_english)
-        #print("-2-->" + response.content)
+        print("hi")
+        url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
+        response = requests.get(url)
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
-            "//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
-        #print("-3-->" + date)
+			"//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
         date = date.replace("']", "").replace("['", "")
-        #print("-4-->" + date)
-
-        ######### fro Horoscope ################
-        web_page = urlopen(url_hindi)
-        soup = BeautifulSoup(web_page, 'html.parser')
-        print "---TODAY---"
-        for extract_div in soup.findAll("div", {"id": "today1"}):
-            horoscope = extract_div.text
-        print horoscope
-        horoscope = horoscope.replace("\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "")
+        horoscope = str(tree.xpath(
+			"//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
+        horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "")
         dict = {
             'date': date,
             'horoscope': horoscope,
-            'sunsign-english': sunsign_en,
-            'sunsign-hindi': sunsign_hn
+            'sunsign': sunsign_en
         }
 
         return dict
