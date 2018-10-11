@@ -10,25 +10,6 @@ import re
 
 class CMPHoroscope:
 
-@staticmethod
-    def get_todays_horoscope_hindi(sunsign_en):
-        print("hi")
-        url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
-        response = requests.get(url)
-        tree = html.fromstring(response.content)
-        date = str(tree.xpath(
-			"//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
-        date = date.replace("']", "").replace("['", "")
-        horoscope = str(tree.xpath(
-			"//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
-        horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "")
-        dict = {
-            'date': date,
-            'horoscope': horoscope,
-            'sunsign': sunsign_en
-        }
-
-        return dict
 		
     @staticmethod
     def get_todays_horoscope_hindi1(sunsign_en):
