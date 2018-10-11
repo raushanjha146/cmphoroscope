@@ -24,9 +24,9 @@ def index_route():
 ###########################################
 
 get_todays_horoscope_hindi# Today's Horoscope Hindi
-@app.route('/horoscope/today-hindi/<sunsign_en>/<sunsign_hn>/<language>', methods=['GET'])
-def today_horoscope_route_hindi(sunsign_en, sunsign_hn, language):
-    result = dict(CMPHoroscope.get_todays_horoscope_hindi(sunsign_en, sunsign_hn, language))
+@app.route('/horoscope/today-hindi/<sunsign_en>', methods=['GET'])
+def today_horoscope_route_hindi(sunsign_en):
+    result = dict(CMPHoroscope.get_todays_horoscope_hindi(sunsign_en))
     #result = dict(CMPHoroscope.get_test())
     return jsonify(date=result['date'],
                    sunsign=result['sunsign'],

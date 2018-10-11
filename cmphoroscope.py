@@ -11,7 +11,7 @@ import re
 class CMPHoroscope:
 
 @staticmethod
-    def get_todays_horoscope_hindi(sunsign_en, sunsign_hn, language):
+    def get_todays_horoscope_hindi(sunsign_en):
         print("hi")
         url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
         response = requests.get(url)
