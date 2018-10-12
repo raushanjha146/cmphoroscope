@@ -13,9 +13,9 @@ class CMPHoroscope:
     @staticmethod
     def get_todays_horoscope_hindi1(sunsign_en, sunsign_hn, language):
         print("hi")
-		#hindi = "https://www.hindi.astroyogi.com/rashiphal/" + sunsign_en
-        url1 = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
-		url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
+		urlhindi = "https://www.hindi.astroyogi.com/rashiphal/" + sunsign_en
+        #url1 = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
+		#url = "http://www.ganeshaspeaks.com/horoscopes/daily-horoscope/" + sunsign_en
         response = requests.get(url)
         tree = html.fromstring(response.content)
         date = str(tree.xpath(
