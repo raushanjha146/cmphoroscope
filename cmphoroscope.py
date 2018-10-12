@@ -15,18 +15,16 @@ class CMPHoroscope:
         print("hi")
 		#hindi = "https://www.hindi.astroyogi.com/rashiphal/" + sunsign_en
         url = "https://www.hindi.astroyogi.com/rashiphal/" + sunsign_en + "-dainik-rashiphal"
-        response = requests.get(url)
-        tree = html.fromstring(response.content)
-        date = str(tree.xpath(
-			"//*[@id=\"daily\"]/div/div[1]/div[1]/div[2]/div/p/text()"))
-        date = date.replace("']", "").replace("['", "")
-        horoscope = str(tree.xpath(
-			"//*[@id=\"daily\"]/div/div[1]/div[2]/p[1]/text()"))
-        horoscope = horoscope.replace("\\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "")
+        ######### fro Horoscope ################
+        web_page = urlopen(url_hindi)
+        soup = BeautifulSoup(web_page, 'html.parser')
+        print "---TODAY---"
+        for extract_div in soup.findAll("div", {"id": "today1"}):
+            horoscope = extract_div.text
+        print horoscope
+        horoscope = horoscope.replace("\n", "").replace("  ", "").replace("[\"", "").replace("\"]", "")
         dict = {
-            'date': date,
-            'horoscope': horoscope,
-            'sunsign': sunsign_en
+            'horoscope': horoscope
         }
 
         return dict
