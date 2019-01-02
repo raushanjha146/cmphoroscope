@@ -23,15 +23,7 @@ def index_route():
 # Horoscopes
 ###########################################
 
-			
-# Todays' Horoscope
-@app.route('/horoscope/today-hindi1/<sunsign_en>/<sunsign_hn>/<language>', methods=['GET'])
-def today1_horoscope_route(sunsign_en, sunsign_hn, language):
-    result = dict(CMPHoroscope.get_todays_horoscope_hindi1(sunsign_en, sunsign_hn, language))
-    return jsonify(date=result['date'],
-                   sunsign_en=result['sunsign'],
-                   horoscope=result['horoscope'])   
-   
+			   
 # Todays' Horoscope
 @app.route('/horoscope/today/<sunsign>', methods=['GET'])
 def today_horoscope_route(sunsign):
